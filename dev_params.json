@@ -1,0 +1,8 @@
+{
+    "Parameters": {
+        "Var1": "1",
+        "Var2": "2",
+        "Branch": "develop",
+        "Repo": "time-lambda2"
+    }
+}
