@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Outputs the time
+
+Parameters:
+    Var1:
+        Type: String
+    Var2:
+        Type: String
+    Branch:
+        Type: String
+    Repo: 
+        Type: String
+
+Resources:
+  MyLambdaFunctionV1:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: V1-${Repo}-${Branch}
+      Handler: index.handler
+      Runtime: nodejs4.3
+      CodeUri: ./v1
+      AutoPublishAlias: v1
+      Environment:
+        Variables:
+          var1: !Ref Var1
+          var2: !Ref Var2
+
+  MyLambdaFunctionV2:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: V2-${Repo}-${Branch}
+      Handler: index.handler
+      Runtime: nodejs4.3
+      CodeUri: ./v2
+      AutoPublishAlias: v2
+      Environment:
+        Variables:
+          var1: !Ref Var1
+          var2: !Ref Var2
+
+  MyLambdaFunctionV3:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: V3-${Repo}-${Branch}
+      Handler: index.handler
+      Runtime: nodejs4.3
+      CodeUri: ./v3
+      AutoPublishAlias: v3
+      Environment:
+        Variables:
+          var1: !Ref Var1
+          var2: !Ref Var2
+
