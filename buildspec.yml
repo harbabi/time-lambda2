@@ -1,7 +1,8 @@
 version: 0.1
 environment_variables:
     plaintext:
-        "INPUT_FILE": "template.yaml"
+        "OUTPUT_FILE": ""
+        "INPUT_FILE": ""
         "S3_BUCKET": ""
 phases:
   install:
@@ -9,10 +10,10 @@ phases:
       - pwd && cd v1 && npm install time
       - pwd && cd v2 && npm install time
       - pwd && cd v3 && npm install time
-      - aws cloudformation package --template $INPUT_FILE --s3-bucket $S3_BUCKET --output-template newtemplate.yaml
+      - aws cloudformation package --template $INPUT_FILE --s3-bucket $S3_BUCKET --output-template $OUTPUT_FILE
 artifacts:
   type: zip
   files:
-    - newtemplate.yaml
+    - $OUTPUT_FILE
     - dev_params.json
 
